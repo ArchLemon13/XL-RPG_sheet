@@ -1,0 +1,308 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>TTRPG Character Sheet</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="app">
+    <header class="topbar">
+      <div class="field-row">
+        <div class="field">
+          <label for="charName">Name</label>
+          <input id="charName" type="text" placeholder="Character name" />
+        </div>
+        <div class="field">
+          <label for="charSpecies">Species</label>
+          <input id="charSpecies" type="text" placeholder="Species" />
+        </div>
+      </div>
+
+      <div class="hp-sp-row">
+        <div class="field">
+          <label for="rankSlider">Current Rank (r1–r12)</label>
+          <input id="rankSlider" type="range" min="1" max="12" value="1" />
+          <div class="range-meta">
+            <span>r<span id="rankLabel">1</span></span>
+          <span class="rank-limit">Rank limit: <span id="rankLimitLabel">1</span></span>
+          </div>
+        </div>
+
+        <div class="stats">
+          <div class="field">
+            <label for="hpInput">HP</label>
+            <input id="hpInput" type="number" min="0" step="1" />
+          </div>
+          <div class="field">
+            <label for="spInput">SP</label>
+            <input id="spInput" type="number" min="0" step="1" />
+          </div>
+        </div>
+      </div>
+
+      <div class="actions">
+        <button id="rollAllBtn" type="button" title="Roll using current rank dice and show total">Test Roll (Any Parameter)</button>
+      </div>
+
+      <div class="roll-log" aria-live="polite">
+        <div id="rollSummary" class="roll-summary">Ready.</div>
+        <div id="rollBreakdown" class="roll-breakdown"></div>
+      </div>
+    </header>
+
+    <main class="sheet">
+      <div class="params-grid">
+        <div class="col">
+          <!-- Col 1: 10 parameters -->
+          <div class="param" data-param="melee">
+            <div class="param-head">
+              <button class="param-roll" type="button">melee</button>
+              <div class="param-controls">
+                <button class="param-minus" type="button">-</button>
+                <input class="param-value" type="number" min="0" step="1" value="0" />
+                <button class="param-plus" type="button">+</button>
+              </div>
+            </div>
+            <div class="param-meta"><span class="cap"></span></div>
+          </div>
+
+          <div class="param" data-param="ranged">
+            <div class="param-head">
+              <button class="param-roll" type="button">ranged</button>
+              <div class="param-controls">
+                <button class="param-minus" type="button">-</button>
+                <input class="param-value" type="number" min="0" step="1" value="0" />
+                <button class="param-plus" type="button">+</button>
+              </div>
+            </div>
+            <div class="param-meta"><span class="cap"></span></div>
+          </div>
+
+          <div class="param" data-param="reflex">
+            <div class="param-head">
+              <button class="param-roll" type="button">reflex</button>
+              <div class="param-controls">
+                <button class="param-minus" type="button">-</button>
+                <input class="param-value" type="number" min="0" step="1" value="0" />
+                <button class="param-plus" type="button">+</button>
+              </div>
+            </div>
+            <div class="param-meta"><span class="cap"></span></div>
+          </div>
+
+          <div class="param" data-param="endurance">
+            <div class="param-head">
+              <button class="param-roll" type="button">endurance</button>
+              <div class="param-controls">
+                <button class="param-minus" type="button">-</button>
+                <input class="param-value" type="number" min="0" step="1" value="0" />
+                <button class="param-plus" type="button">+</button>
+              </div>
+            </div>
+            <div class="param-meta"><span class="cap"></span></div>
+          </div>
+
+          <div class="param" data-param="mobility">
+            <div class="param-head">
+              <button class="param-roll" type="button">mobility</button>
+              <div class="param-controls">
+                <button class="param-minus" type="button">-</button>
+                <input class="param-value" type="number" min="0" step="1" value="0" />
+                <button class="param-plus" type="button">+</button>
+              </div>
+            </div>
+            <div class="param-meta"><span class="cap"></span></div>
+          </div>
+
+          <div class="param" data-param="tech">
+            <div class="param-head">
+              <button class="param-roll" type="button">tech</button>
+              <div class="param-controls">
+                <button class="param-minus" type="button">-</button>
+                <input class="param-value" type="number" min="0" step="1" value="0" />
+                <button class="param-plus" type="button">+</button>
+              </div>
+            </div>
+            <div class="param-meta"><span class="cap"></span></div>
+          </div>
+
+          <div class="param" data-param="social">
+            <div class="param-head">
+              <button class="param-roll" type="button">social</button>
+              <div class="param-controls">
+                <button class="param-minus" type="button">-</button>
+                <input class="param-value" type="number" min="0" step="1" value="0" />
+                <button class="param-plus" type="button">+</button>
+              </div>
+            </div>
+            <div class="param-meta"><span class="cap"></span></div>
+          </div>
+
+          <div class="param" data-param="survival">
+            <div class="param-head">
+              <button class="param-roll" type="button">survival</button>
+              <div class="param-controls">
+                <button class="param-minus" type="button">-</button>
+                <input class="param-value" type="number" min="0" step="1" value="0" />
+                <button class="param-plus" type="button">+</button>
+              </div>
+            </div>
+            <div class="param-meta"><span class="cap"></span></div>
+          </div>
+
+          <div class="param" data-param="pilot">
+            <div class="param-head">
+              <button class="param-roll" type="button">pilot</button>
+              <div class="param-controls">
+                <button class="param-minus" type="button">-</button>
+                <input class="param-value" type="number" min="0" step="1" value="0" />
+                <button class="param-plus" type="button">+</button>
+              </div>
+            </div>
+            <div class="param-meta"><span class="cap"></span></div>
+          </div>
+
+          <div class="param" data-param="analitics">
+            <div class="param-head">
+              <button class="param-roll" type="button">analitics</button>
+              <div class="param-controls">
+                <button class="param-minus" type="button">-</button>
+                <input class="param-value" type="number" min="0" step="1" value="0" />
+                <button class="param-plus" type="button">+</button>
+              </div>
+            </div>
+            <div class="param-meta"><span class="cap"></span></div>
+          </div>
+        </div>
+
+        <div class="col">
+          <!-- Col 2: remaining 10 parameters -->
+          <div class="param" data-param="history">
+            <div class="param-head">
+              <button class="param-roll" type="button">history</button>
+              <div class="param-controls">
+                <button class="param-minus" type="button">-</button>
+                <input class="param-value" type="number" min="0" step="1" value="0" />
+                <button class="param-plus" type="button">+</button>
+              </div>
+            </div>
+            <div class="param-meta"><span class="cap"></span></div>
+          </div>
+
+          <div class="param" data-param="society">
+            <div class="param-head">
+              <button class="param-roll" type="button">society</button>
+              <div class="param-controls">
+                <button class="param-minus" type="button">-</button>
+                <input class="param-value" type="number" min="0" step="1" value="0" />
+                <button class="param-plus" type="button">+</button>
+              </div>
+            </div>
+            <div class="param-meta"><span class="cap"></span></div>
+          </div>
+
+          <div class="param" data-param="linguistics">
+            <div class="param-head">
+              <button class="param-roll" type="button">linguistics</button>
+              <div class="param-controls">
+                <button class="param-minus" type="button">-</button>
+                <input class="param-value" type="number" min="0" step="1" value="0" />
+                <button class="param-plus" type="button">+</button>
+              </div>
+            </div>
+            <div class="param-meta"><span class="cap"></span></div>
+          </div>
+
+          <div class="param" data-param="art">
+            <div class="param-head">
+              <button class="param-roll" type="button">art</button>
+              <div class="param-controls">
+                <button class="param-minus" type="button">-</button>
+                <input class="param-value" type="number" min="0" step="1" value="0" />
+                <button class="param-plus" type="button">+</button>
+              </div>
+            </div>
+            <div class="param-meta"><span class="cap"></span></div>
+          </div>
+
+          <div class="param" data-param="navigation">
+            <div class="param-head">
+              <button class="param-roll" type="button">navigation</button>
+              <div class="param-controls">
+                <button class="param-minus" type="button">-</button>
+                <input class="param-value" type="number" min="0" step="1" value="0" />
+                <button class="param-plus" type="button">+</button>
+              </div>
+            </div>
+            <div class="param-meta"><span class="cap"></span></div>
+          </div>
+
+          <div class="param" data-param="capital">
+            <div class="param-head">
+              <button class="param-roll" type="button">capital</button>
+              <div class="param-controls">
+                <button class="param-minus" type="button">-</button>
+                <input class="param-value" type="number" min="0" step="1" value="0" />
+                <button class="param-plus" type="button">+</button>
+              </div>
+            </div>
+            <div class="param-meta"><span class="cap"></span></div>
+          </div>
+
+          <div class="param" data-param="will">
+            <div class="param-head">
+              <button class="param-roll" type="button">will</button>
+              <div class="param-controls">
+                <button class="param-minus" type="button">-</button>
+                <input class="param-value" type="number" min="0" step="1" value="0" />
+                <button class="param-plus" type="button">+</button>
+              </div>
+            </div>
+            <div class="param-meta"><span class="cap"></span></div>
+          </div>
+
+          <div class="param" data-param="reputation">
+            <div class="param-head">
+              <button class="param-roll" type="button">reputation</button>
+              <div class="param-controls">
+                <button class="param-minus" type="button">-</button>
+                <input class="param-value" type="number" min="0" step="1" value="0" />
+                <button class="param-plus" type="button">+</button>
+              </div>
+            </div>
+            <div class="param-meta"><span class="cap"></span></div>
+          </div>
+
+          <div class="param" data-param="karma">
+            <div class="param-head">
+              <button class="param-roll" type="button">karma</button>
+              <div class="param-controls">
+                <button class="param-minus" type="button">-</button>
+                <input class="param-value" type="number" min="0" step="1" value="0" />
+                <button class="param-plus" type="button">+</button>
+              </div>
+            </div>
+            <div class="param-meta"><span class="cap"></span></div>
+          </div>
+
+          <div class="param" data-param="plot points">
+            <div class="param-head">
+              <button class="param-roll" type="button">plot points</button>
+              <div class="param-controls">
+                <button class="param-minus" type="button">-</button>
+                <input class="param-value" type="number" min="0" step="1" value="0" />
+                <button class="param-plus" type="button">+</button>
+              </div>
+            </div>
+            <div class="param-meta"><span class="cap"></span></div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

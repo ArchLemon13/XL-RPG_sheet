@@ -1,0 +1,216 @@
+:root{
+    --bg: #0f1220;
+    --panel: #171a2e;
+    --panel2: #121526;
+    --text: #e9ecff;
+    --muted: #aab0d6;
+    --accent: #7aa2ff;
+    --accent2: #7ef0c3;
+    --danger: #ff6b6b;
+  
+    --border: rgba(255,255,255,0.10);
+    --shadow: 0 10px 30px rgba(0,0,0,0.35);
+  }
+  
+  *{ box-sizing: border-box; }
+  body{
+    margin:0;
+    font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+    background: radial-gradient(1200px 600px at 20% -10%, rgba(122,162,255,0.22), transparent 60%),
+                radial-gradient(900px 500px at 90% 0%, rgba(126,240,195,0.18), transparent 55%),
+                var(--bg);
+    color: var(--text);
+  }
+  
+  .app{
+    padding: 16px;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+  
+  .topbar{
+    background: linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0.02));
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    box-shadow: var(--shadow);
+    padding: 14px;
+  }
+  
+  .field-row{
+    display:flex;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+  
+  .field{
+    flex: 1;
+    min-width: 200px;
+    display:flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  
+  label{
+    color: var(--muted);
+    font-size: 12px;
+  }
+  
+  input[type="text"], input[type="number"]{
+    width: 100%;
+    padding: 10px 12px;
+    border-radius: 10px;
+    border: 1px solid var(--border);
+    background: var(--panel2);
+    color: var(--text);
+    outline: none;
+  }
+  
+  input[type="text"]::placeholder,
+  input[type="number"]::placeholder{
+    color: rgba(233,236,255,0.35);
+  }
+  
+  .hp-sp-row{
+    margin-top: 12px;
+    display:flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    align-items: flex-end;
+  }
+  
+  .stats{
+    display:flex;
+    gap: 12px;
+    flex: 0 0 auto;
+  }
+  
+  .actions{
+    margin-top: 10px;
+  }
+  
+  button{
+    border: 1px solid var(--border);
+    background: rgba(255,255,255,0.06);
+    color: var(--text);
+    padding: 10px 12px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: transform 0.05s ease, background 0.15s ease, border-color 0.15s ease;
+    user-select: none;
+  }
+  
+  button:hover{
+    background: rgba(122,162,255,0.14);
+    border-color: rgba(122,162,255,0.35);
+  }
+  
+  button:active{
+    transform: translateY(1px);
+  }
+  
+  #rankSlider{
+    width: 100%;
+    margin-top: 6px;
+  }
+  
+  .range-meta{
+    margin-top: 6px;
+    display:flex;
+    justify-content: space-between;
+    gap: 10px;
+    color: var(--muted);
+    font-size: 12px;
+  }
+  
+  .rank-limit{ color: rgba(233,236,255,0.80); }
+  
+  .roll-log{
+    margin-top: 10px;
+    padding: 10px;
+    border-radius: 12px;
+    border: 1px solid var(--border);
+    background: rgba(0,0,0,0.18);
+  }
+  
+  .roll-summary{
+    font-weight: 700;
+    margin-bottom: 6px;
+  }
+  
+  .roll-breakdown{
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+    color: rgba(233,236,255,0.80);
+    font-size: 12px;
+    word-break: break-word;
+  }
+  
+  .sheet{
+    margin-top: 14px;
+    padding: 8px 2px;
+  }
+  
+  .params-grid{
+    display:flex;
+    gap: 12px;
+  }
+  
+  .col{
+    flex: 1;
+    display:flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .param{
+    background: rgba(255,255,255,0.04);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 10px;
+  }
+  
+  .param-head{
+    display:flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+  }
+  
+  .param-roll{
+    flex: 1;
+    text-align: left;
+    padding: 10px 12px;
+    border-radius: 10px;
+    background: rgba(122,162,255,0.10);
+    border-color: rgba(122,162,255,0.25);
+    font-weight: 650;
+  }
+  
+  .param-controls{
+    display:flex;
+    align-items:center;
+    gap: 8px;
+    flex: 0 0 auto;
+  }
+  
+  .param-controls input{
+    width: 84px;
+    text-align: center;
+    padding: 10px 8px;
+  }
+  
+  .param-minus, .param-plus{
+    width: 42px;
+    padding: 10px 0;
+  }
+  
+  .param-meta{
+    margin-top: 8px;
+    color: var(--muted);
+    font-size: 11px;
+  }
+  
+  @media (max-width: 900px){
+    .params-grid{ flex-direction: column; }
+    .stats{ width: 100%; }
+  }
+  
