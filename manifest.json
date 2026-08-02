@@ -1,6 +1,6 @@
 {
-  "manifest_version": 2,
-  "name": "Owlbear Rodeo RPG Rank Sheet",
+  "manifest_version": 3,
+  "name": "Owlbear Rodeo XL-RPG Sheet",
   "version": "1.0.0",
   "description": "Compact character sheet for custom TTRPG with rank dice and parameter checks.",
   "action": {
@@ -9,9 +9,4 @@
     "height": 600,
     "width": 400
   },
-  "web_accessible_resources": [
-    "index.html",
-    "script.js",
-    "style.css"
-  ]
 }
