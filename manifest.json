@@ -3,7 +3,7 @@
   "name": "Owlbear Rodeo RPG Rank Sheet",
   "version": "1.0.0",
   "description": "Compact character sheet for custom TTRPG with rank dice and parameter checks.",
-  "icons": {
+  "icon": {
     "128": "icon-128.png"
   },
   "content_security_policy": {
