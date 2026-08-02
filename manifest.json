@@ -13,7 +13,7 @@
     "default_popup": "index.html"
   },
   "permissions": [
-    "activeTab"
+    { "name": "activeTab" }
   ],
   "web_accessible_resources": [
     "index.html",
