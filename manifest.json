@@ -4,6 +4,7 @@
   "version": "1.0.0",
   "description": "Compact character sheet for custom TTRPG with rank dice and parameter checks.",
   "action": {
+    "title": "XL-RPG sheet",
     "icon": "/icon.svg",
     "popover": "/",
     "height": 600,
